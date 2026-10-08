@@ -36,7 +36,7 @@ export default function Header() {
           className="justify-self-end rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold tracking-[0.12em] text-white shadow-[0_8px_24px_rgba(37,99,235,0.24)] transition-colors hover:bg-blue-700"
         >
           {site.callToAction.label}
-        </Link>
+        </Link> 
       </div>
     </header>
   );

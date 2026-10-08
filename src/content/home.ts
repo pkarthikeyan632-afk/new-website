@@ -1,9 +1,9 @@
 export const home = {
   intro: "Hello, I'm",
-  bio: "I help companies turn complex ideas into clear, useful digital experiences.",
+  bio: "I build software systems that combine AI, automation, and engineering to solve real-world problems.",
   cards: [
-    { title: "Brand Strategy", image: "/images/brand-strategy.png" },
-    { title: "Digital Products", image: "/images/digital-products.png" },
-    { title: "Creative Direction", image: "/images/creative-direction.png" },
+    { title: "AI Systems", iconName: "Brain", image: "/images/brand-strategy.png" },
+    { title: "Automation", iconName: "Workflow", image: "/images/digital-products.png" },
+    { title: "Software Engineering", iconName: "Code", image: "/images/creative-direction.png" },
   ],
 };

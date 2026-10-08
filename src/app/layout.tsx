@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Geist, Geist_Mono } from "next/font/google";
-import Header from "@/components/layout/Header";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,8 +19,8 @@ const archivoBlack = Archivo_Black({
 });
 
 export const metadata: Metadata = {
-  title: "Morgan | Portfolio",
-  description: "Morgan's professional portfolio.",
+  title: "karthikeyan | Portfolio",
+  description: "Karthikeyan's professional portfolio.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -31,7 +30,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${archivoBlack.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <Header />
         {children}
       </body>
     </html>
