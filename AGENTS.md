@@ -11,6 +11,14 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Folder plan
 
 - `public/animations/`: Lottie animation assets.
+- `src/app/expertise/[slug]/page.tsx`: dynamic expertise detail route.
+- `src/components/sections/expertise/ExpertiseHero.tsx`: expertise page layout.
+- `src/content/expertise.ts`: expertise page content.
+- `src/content/projects.ts`: project data and lookup helpers.
+
+## Content rules
+
+- Never invent project facts. Placeholder text must start with [PLACEHOLDER]
 
 ## Components
 

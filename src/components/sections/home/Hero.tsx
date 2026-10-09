@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Card from "@/components/ui/Card";
 import SocialLinks from "@/components/ui/SocialLinks";
@@ -41,13 +42,13 @@ export default function Hero() {
 
                 <div className="hidden min-w-0 lg:block" aria-hidden="true" />
 
-                <div className="relative z-20 grid min-w-0 grid-cols-3 items-start gap-1 md:flex md:flex-col md:gap-5 lg:translate-x-4 lg:translate-y-10 lg:justify-center">
+                <div className="relative z-20 grid min-w-0 grid-cols-3 items-start gap-1 md:flex md:flex-col md:gap-5 lg:hidden">
                   {home.cards.map((card, index) => (
                     <div
                       key={card.title}
                       className={index === 1 ? "justify-self-center md:self-end" : "justify-self-center md:self-start"}
                     >
-                      <Card title={card.title} image={card.image} animation={card.animation} />
+                      <Card href={card.href} title={card.title} animation={card.animation} scale={1} />
                     </div>
                   ))}
                 </div>
@@ -69,6 +70,29 @@ export default function Hero() {
             </div>
           </div>
         </Container>
+      </div>
+      <div className="pointer-events-none absolute inset-0 z-20 mx-auto hidden w-full max-w-7xl grid-cols-[1fr_1.55fr_0.75fr] gap-8 px-6 pt-[5.25rem] pb-6 lg:grid">
+        <div />
+        <div />
+        <div className="relative">
+          <div className="right-floating-container absolute top-[5.25rem] bottom-6">
+            {home.cards.map((card) => (
+              <div
+                key={card.title}
+                data-position={card.position.key}
+                className="right-floating-item"
+                style={
+                  {
+                    "--item-top": card.position.top,
+                    "--item-left": card.position.left,
+                  } as CSSProperties
+                }
+              >
+                <Card href={card.href} title={card.title} animation={card.animation} scale={card.scale} />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
