@@ -8,6 +8,14 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
+## Folder plan
+
+- `public/animations/`: Lottie animation assets.
+
+## Components
+
+- Client components only for interactive or browser-dependent behavior; keep the rest as Server Components.
+
 ## Design
 
-- Cards: floating round icon bubbles with a label pill, no preview images
+- Cards: floating 3D images with a label pill

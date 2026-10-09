@@ -1,9 +1,13 @@
 export const home = {
   intro: "Hello, I'm",
-  bio: "I build software systems that combine AI, automation, and engineering to solve real-world problems.",
+  bio: "I build software systems that combine AI, automation, and engineering to solve real‑world problems.",
   cards: [
-    { title: "AI Systems", iconName: "Brain", image: "/images/brand-strategy.png" },
-    { title: "Automation", iconName: "Workflow", image: "/images/digital-products.png" },
-    { title: "Software Engineering", iconName: "Code", image: "/images/creative-direction.png" },
+    { title: "AI Systems", image: "/images/ai-systems.webp" },
+    { title: "Automation", image: "/images/automation.webp" },
+    {
+      title: "Software Engineering",
+      image: "/images/software-engineering.webp",
+      animation: "/animations/software-engineering.lottie",
+    },
   ],
 };

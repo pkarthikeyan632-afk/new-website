@@ -1,44 +1,55 @@
-import { home } from "@/content/home";
+import Image from "next/image";
+import LottiePlayer from "@/components/ui/LottiePlayer";
 
 type CardProps = {
   title: string;
   image: string;
+  animation?: string;
 };
 
-export default function Card({ title }: CardProps) {
-  const iconName = home.cards.find((card) => card.title === title)?.iconName;
+export default function Card({ title, image, animation }: CardProps) {
+  const objectClassName = "float relative z-10 aspect-square w-full max-w-[96px] object-contain md:h-[240px] md:w-[270px]";
+  const objectStyle = {
+    animationDuration:
+      title === "AI Systems"
+        ? "4.8s"
+        : title === "Automation"
+          ? "5.6s"
+          : "4.3s",
+    animationDelay:
+      title === "AI Systems"
+        ? "0s"
+        : title === "Automation"
+          ? "-1.4s"
+          : "-2.1s",
+  };
 
   return (
-    <article className="flex flex-col items-center gap-3">
-      <div
-        className="float flex h-20 w-20 items-center justify-center rounded-full bg-white text-blue-600 shadow-[0_10px_30px_rgba(15,23,42,0.12)]"
-        style={{
-          animationDuration:
-            iconName === "Brain" ? "4.8s" : iconName === "Workflow" ? "5.6s" : "4.3s",
-          animationDelay:
-            iconName === "Brain" ? "0s" : iconName === "Workflow" ? "-1.4s" : "-2.1s",
-        }}
-      >
-        {iconName === "Brain" ? (
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-8 w-8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 18V5a3 3 0 0 0-5.6-1.5A4 4 0 0 0 4 10a4 4 0 0 0 2 7.5A3 3 0 0 0 12 18Z" />
-            <path d="M12 18V5a3 3 0 0 1 5.6-1.5A4 4 0 0 1 20 10a4 4 0 0 1-2 7.5A3 3 0 0 1 12 18Z" />
-            <path d="M8 8a2 2 0 0 1 2 2m-4 3a2 2 0 0 1 2 2m8-7a2 2 0 0 0-2 2m4 3a2 2 0 0 0-2 2" />
-          </svg>
-        ) : iconName === "Workflow" ? (
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-8 w-8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="3" y="3" width="6" height="6" rx="1.5" />
-            <rect x="15" y="15" width="6" height="6" rx="1.5" />
-            <circle cx="18" cy="6" r="3" />
-            <path d="M9 6h3a3 3 0 0 1 3 3v3a3 3 0 0 0 3 3M6 9v3a3 3 0 0 0 3 3h6" />
-          </svg>
+    <article className="flex w-full min-w-0 flex-col items-center gap-1 md:w-auto md:gap-3">
+      <div className="relative flex h-26 w-full items-center justify-center md:h-[180px] md:w-[200px]">
+        <div
+          aria-hidden="true"
+          className="absolute bottom-2 left-1/2 h-3 w-18 -translate-x-1/2 rounded-[50%] bg-slate-500/15 blur-sm md:bottom-3 md:h-3 md:w-24 md:blur-md"
+        />
+        {animation ? (
+          <LottiePlayer
+            src={animation}
+            fallback={image}
+            className={objectClassName}
+            style={objectStyle}
+          />
         ) : (
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" className="h-8 w-8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-            <path d="m8 17-5-5 5-5m8 10 5-5-5-5m-3 12 2-14" />
-          </svg>
+          <Image
+            src={image}
+            alt=""
+            width={900}
+            height={1200}
+            className={objectClassName}
+            style={objectStyle}
+          />
         )}
       </div>
-      <p className="rounded-full bg-white px-3 py-1.5 text-sm font-medium text-slate-700 shadow-sm">
+      <p className="max-w-full rounded-full bg-white px-1.5 py-1 text-center text-[10px] font-medium leading-tight text-slate-700 shadow-sm md:px-3 md:py-1.5 md:text-sm md:leading-[1.25rem]">
         {title}
       </p>
     </article>

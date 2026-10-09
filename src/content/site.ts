@@ -1,5 +1,6 @@
 export const site = {
   name: "Karthikeyan",
+  role: "Software Engineer",
   logo: "KP",
   email: "p.karthikeyan632@gmail.com",
   socialLinks: [

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Geist, Geist_Mono } from "next/font/google";
+import { site } from "@/content/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,8 +20,8 @@ const archivoBlack = Archivo_Black({
 });
 
 export const metadata: Metadata = {
-  title: "karthikeyan | Portfolio",
-  description: "Karthikeyan's professional portfolio.",
+  title: `${site.name} | ${site.role}`,
+  description: `${site.name} is a ${site.role}.`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
