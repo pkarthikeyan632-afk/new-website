@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 
-type IconName = (typeof site.socialLinks)[number]["icon"] | "email";
+type IconName = (typeof site.socialLinks)[number]["icon"] | "email" | "github";
+
+type SocialLinksProps = {
+  variant?: "default" | "compact";
+};
 
 function SocialIcon({ name }: { name: IconName }) {
   if (name === "email") {
@@ -21,6 +25,14 @@ function SocialIcon({ name }: { name: IconName }) {
     );
   }
 
+  if (name === "github") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="h-5 w-5">
+        <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.08c-3.1.67-3.75-1.32-3.75-1.32-.5-1.28-1.23-1.62-1.23-1.62-1-.68.08-.67.08-.67 1.1.08 1.68 1.13 1.68 1.13.98 1.68 2.56 1.2 3.18.92.1-.71.38-1.2.69-1.48-2.48-.28-5.09-1.24-5.09-5.53 0-1.22.44-2.22 1.14-3-.12-.28-.5-1.42.11-2.96 0 0 .93-.3 3.05 1.14a10.6 10.6 0 0 1 5.56 0c2.12-1.44 3.04-1.14 3.04-1.14.61 1.54.23 2.68.12 2.96.7.78 1.13 1.78 1.13 3.01 0 4.3-2.62 5.24-5.11 5.52.4.35.74 1.03.74 2.08V22c0 .29.2.64.76.53A11.1 11.1 0 0 0 12 .9Z" />
+      </svg>
+    );
+  }
+
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="h-5 w-5">
       <rect x="3.5" y="3.5" width="17" height="17" rx="5" stroke="currentColor" strokeWidth="1.8" />
@@ -30,7 +42,33 @@ function SocialIcon({ name }: { name: IconName }) {
   );
 }
 
-export default function SocialLinks() {
+export default function SocialLinks({ variant = "default" }: SocialLinksProps) {
+  if (variant === "compact") {
+    return (
+      <div className="flex items-center gap-2.5">
+        <Link
+          href={`mailto:${site.email}`}
+          aria-label={site.email}
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-blue-700 shadow-sm ring-1 ring-slate-100 transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 motion-reduce:transition-none"
+        >
+          <SocialIcon name="email" />
+        </Link>
+        {site.socialLinks.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            aria-label={link.label}
+            target="_blank"
+            rel="noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-blue-700 shadow-sm ring-1 ring-slate-100 transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2 motion-reduce:transition-none"
+          >
+            <SocialIcon name={link.icon} />
+          </Link>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-start gap-3">
       <Link

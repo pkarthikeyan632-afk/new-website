@@ -48,7 +48,7 @@ export default function Hero() {
                       key={card.title}
                       className={index === 1 ? "justify-self-center md:self-end" : "justify-self-center md:self-start"}
                     >
-                      <Card href={card.href} title={card.title} animation={card.animation} scale={1} />
+                      <Card href={card.href} title={card.title} animation={card.lottie} scale={1} />
                     </div>
                   ))}
                 </div>
@@ -88,7 +88,7 @@ export default function Hero() {
                   } as CSSProperties
                 }
               >
-                <Card href={card.href} title={card.title} animation={card.animation} scale={card.scale} />
+                <Card href={card.href} title={card.title} animation={card.lottie} scale={card.scale} />
               </div>
             ))}
           </div>

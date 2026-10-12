@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
+import MainNavigation from "@/components/layout/MainNavigation";
 import MobileMenu from "@/components/layout/MobileMenu";
 import { site } from "@/content/site";
 
@@ -16,23 +17,7 @@ export default function Header() {
             {site.logo}<span className="text-blue-600">.</span>
           </Link>
 
-          <nav aria-label="Main navigation" className="hidden items-center gap-8 md:flex">
-            {site.navigation.map((item, index) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={index === 0 ? "page" : undefined}
-                className={`relative py-2 text-base font-medium transition-colors hover:text-blue-600 ${
-                  index === 0 ? "text-blue-600" : "text-slate-700"
-                }`}
-              >
-                {item.label}
-                {index === 0 && (
-                  <span className="absolute inset-x-0 -bottom-0.5 mx-auto h-0.5 w-4 rounded-full bg-blue-600" />
-                )}
-              </Link>
-            ))}
-          </nav>
+          <MainNavigation navigation={site.navigation} />
 
           <Link
             href={site.callToAction.href}

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 type MobileMenuProps = {
   navigation: { label: string; href: string }[];
@@ -10,6 +11,7 @@ type MobileMenuProps = {
 
 export default function MobileMenu({ navigation, callToAction }: MobileMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="relative justify-self-end md:hidden">
@@ -32,16 +34,25 @@ export default function MobileMenu({ navigation, callToAction }: MobileMenuProps
           aria-label="Mobile navigation"
           className="absolute right-0 top-full z-50 mt-2 flex w-64 max-w-[calc(100vw-2rem)] flex-col gap-1 rounded-2xl border border-slate-100 bg-white p-3 shadow-xl"
         >
-          {navigation.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setIsOpen(false)}
-              className="rounded-xl px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navigation.map((item) => {
+            const isActive = item.href === "/projects"
+              ? pathname === item.href || pathname.startsWith(`${item.href}/`)
+              : pathname === item.href;
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                onClick={() => setIsOpen(false)}
+                className={`rounded-xl px-3 py-2.5 text-sm font-medium hover:bg-slate-50 hover:text-blue-600 ${
+                  isActive ? "bg-blue-50 text-blue-700" : "text-slate-700"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
           <Link
             href={callToAction.href}
             onClick={() => setIsOpen(false)}

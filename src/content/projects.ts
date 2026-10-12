@@ -1,6 +1,8 @@
+import type { CategorySlug } from "@/content/categories";
+
 export type Project = {
   slug: string;
-  expertise: "software-engineering" | "ai-automation" | "embedded-iot";
+  category: CategorySlug;
   title: string;
   oneLine: string;
   problem: string;
@@ -13,12 +15,26 @@ export type Project = {
   duration: string;
   links: { label: string; href: string }[];
   image?: string;
+  imageAlt?: string;
+};
+
+export const projectCardCopy = {
+  categoryPill: "CATEGORY",
+  projectAction: "READ MORE",
+  categoryAction: "VIEW PROJECTS",
+  projectsComingSoon: "Projects coming soon",
+  allProjects: "All projects",
+};
+
+export const projectsPageCopy = {
+  title: "Projects",
+  intro: "Browse work by category.",
 };
 
 export const projects: Project[] = [
   {
     slug: "software-engineering-placeholder",
-    expertise: "software-engineering",
+    category: "software-engineering",
     title: "[PLACEHOLDER] Software engineering project",
     oneLine: "[PLACEHOLDER] Summary to be replaced with verified project details.",
     problem: "[PLACEHOLDER] Describe the problem after confirming the project facts.",
@@ -38,7 +54,7 @@ export const projects: Project[] = [
   },
   {
     slug: "ai-automation-placeholder",
-    expertise: "ai-automation",
+    category: "ai-automation",
     title: "[PLACEHOLDER] AI and automation project",
     oneLine: "[PLACEHOLDER] Summary to be replaced with verified project details.",
     problem: "[PLACEHOLDER] Describe the problem after confirming the project facts.",
@@ -58,7 +74,7 @@ export const projects: Project[] = [
   },
   {
     slug: "embedded-iot-placeholder",
-    expertise: "embedded-iot",
+    category: "embedded-iot",
     title: "[PLACEHOLDER] Embedded and IoT project",
     oneLine: "[PLACEHOLDER] Summary to be replaced with verified project details.",
     problem: "[PLACEHOLDER] Describe the problem after confirming the project facts.",
@@ -78,10 +94,10 @@ export const projects: Project[] = [
   },
 ];
 
-export function getProjectsByExpertise(expertise: Project["expertise"]): Project[] {
-  return projects.filter((project) => project.expertise === expertise);
+export function getProjectsByCategory(category: Project["category"]): Project[] {
+  return projects.filter((project) => project.category === category);
 }
 
-export function getProject(slug: string): Project | undefined {
-  return projects.find((project) => project.slug === slug);
+export function getProject(category: Project["category"], slug: string): Project | undefined {
+  return projects.find((project) => project.category === category && project.slug === slug);
 }
