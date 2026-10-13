@@ -58,16 +58,23 @@ export default function AboutHero() {
       <div className="about-photo-wrap">
         <div className="about-photo-space">
           <div aria-hidden="true" className="about-photo-orb" />
-          {hasPhoto && (
-            <Image
-              src={photoPath}
-              alt={site.name}
-              fill
-              priority
-              sizes="(min-width: 1280px) 33vw, 100vw"
-              className="about-portrait-image z-10 object-cover object-top"
-            />
-          )}
+          <div className="about-portrait-anchor">
+            <div className="about-portrait-wrapper">
+              {hasPhoto && (
+                <div className="about-portrait-clip">
+                  <Image
+                    src={photoPath}
+                    alt={site.name}
+                    fill
+                    priority
+                    sizes="(min-width: 1280px) 33vw, 100vw"
+                    className="about-portrait-image z-10 object-cover object-top"
+                  />
+                </div>
+              )}
+              <QuoteBubbles quotes={content.quotes} />
+            </div>
+          </div>
         </div>
       </div>
 
@@ -85,7 +92,6 @@ export default function AboutHero() {
           ))}
         </div>
       </div>
-      <QuoteBubbles quotes={content.quotes} />
     </section>
   );
 }

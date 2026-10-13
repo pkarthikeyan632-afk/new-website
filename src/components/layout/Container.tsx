@@ -5,5 +5,5 @@ type ContainerProps = {
 };
 
 export default function Container({ children }: ContainerProps) {
-  return <div className="mx-auto w-full max-w-[90rem] px-[clamp(24px,4vw,64px)]">{children}</div>;
+  return <div className="mx-auto w-full max-w-[var(--container-max)] px-[var(--container-gutter)]">{children}</div>;
 }

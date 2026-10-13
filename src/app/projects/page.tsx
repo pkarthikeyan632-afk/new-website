@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PageFrame from "@/components/layout/PageFrame";
 import CardGrid from "@/components/sections/projects/CardGrid";
 import CategoryCard from "@/components/ui/CategoryCard";
 import { categories } from "@/content/categories";
@@ -13,8 +12,7 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <PageFrame>
-      <section className="py-12 md:py-16">
+    <section className="project-index-content pb-12 md:pb-16">
         <h1 className="font-display text-4xl font-bold text-slate-950 sm:text-5xl">
           {projectsPageCopy.title}
         </h1>
@@ -28,7 +26,6 @@ export default function ProjectsPage() {
             </li>
           ))}
         </CardGrid>
-      </section>
-    </PageFrame>
+    </section>
   );
 }

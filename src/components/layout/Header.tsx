@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 
 export default function Header() {
   return (
-    <header className="w-full pt-6 sm:pt-8">
+    <header className="site-header relative z-30 w-full">
       <Container>
         <div className="grid w-full grid-cols-[1fr_auto_1fr] items-center">
           <Link
@@ -21,7 +21,7 @@ export default function Header() {
 
           <Link
             href={site.callToAction.href}
-            className="hidden justify-self-end rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold tracking-[0.12em] text-white shadow-[0_8px_24px_rgba(37,99,235,0.24)] transition-colors hover:bg-blue-700 md:inline"
+            className="site-header-cta hidden justify-self-end rounded-full bg-blue-600 text-white transition-colors hover:bg-blue-700 md:inline"
           >
             {site.callToAction.label}
           </Link>

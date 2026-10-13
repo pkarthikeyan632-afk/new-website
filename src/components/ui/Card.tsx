@@ -46,7 +46,7 @@ export default function Card({ href, title, animation, scale = 1 }: CardProps) {
             />
           </div>
         </div>
-        <p className="max-w-full rounded-full bg-white px-1.5 py-1 text-center text-[10px] font-medium leading-tight text-slate-700 shadow-sm transition-shadow group-hover:shadow-[0_6px_18px_rgba(37,99,235,0.18)] motion-reduce:transition-none md:px-3 md:py-1.5 md:text-sm md:leading-[1.25rem] lg:max-w-none lg:whitespace-nowrap">
+        <p className="home-card-label max-w-full rounded-full bg-white px-1.5 py-1 text-center font-medium leading-tight text-slate-700 transition-shadow group-hover:shadow-[0_6px_18px_rgba(37,99,235,0.18)] motion-reduce:transition-none md:px-3 md:py-1.5 md:leading-[1.25rem] lg:max-w-none lg:whitespace-nowrap">
           {title}
         </p>
       </article>

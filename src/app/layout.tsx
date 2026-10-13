@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo_Black, Geist, Geist_Mono } from "next/font/google";
+import PageFrame from "@/components/layout/PageFrame";
 import { site } from "@/content/site";
 import "./globals.css";
 
@@ -31,7 +32,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${archivoBlack.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        {children}
+        <PageFrame>{children}</PageFrame>
       </body>
     </html>
   );

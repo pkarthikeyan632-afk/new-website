@@ -1,7 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import Container from "@/components/layout/Container";
-import Header from "@/components/layout/Header";
 import type { Category } from "@/content/categories";
 import type { Project } from "@/content/projects";
 
@@ -12,11 +10,7 @@ type ProjectDetailsProps = {
 
 export default function ProjectDetails({ category, project }: ProjectDetailsProps) {
   return (
-    <>
-      <Header />
-      <main className="flex w-full flex-1">
-        <Container>
-          <article className="mx-auto max-w-4xl py-16">
+    <article className="project-detail-content max-w-4xl pb-16">
             <Link
               href={`/projects/${category.slug}`}
               className="mb-8 inline-block rounded-md text-sm font-medium text-blue-700 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-4"
@@ -92,9 +86,6 @@ export default function ProjectDetails({ category, project }: ProjectDetailsProp
                 ))}
               </ul>
             )}
-          </article>
-        </Container>
-      </main>
-    </>
+    </article>
   );
 }

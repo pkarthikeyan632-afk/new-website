@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import PageFrame from "@/components/layout/PageFrame";
 import CardGrid from "@/components/sections/projects/CardGrid";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { categories } from "@/content/categories";
@@ -32,8 +31,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const projects = getProjectsByCategory(category.slug);
 
   return (
-    <PageFrame>
-      <section className="py-12 md:py-16">
+    <section className="project-index-content pb-12 md:pb-16">
         <Link
           href="/projects"
           className="mb-8 inline-block rounded-md text-sm font-medium text-blue-700 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-4"
@@ -49,7 +47,6 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
             </li>
           ))}
         </CardGrid>
-      </section>
-    </PageFrame>
+    </section>
   );
 }

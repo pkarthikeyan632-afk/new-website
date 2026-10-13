@@ -1,20 +1,30 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import type { AboutQuote, AboutQuoteSpot } from "@/content/about";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
+import type { AboutQuote } from "@/content/about";
 
 type QuoteBubblesProps = { quotes: AboutQuote[] };
 
 const ROTATION_INTERVAL_MS = 4000;
 const EXIT_DURATION_MS = 150;
-const SPOT_SEQUENCE: AboutQuoteSpot[] = ["top-left", "top-right", "right-low", "left-low"];
+type QuoteSpot = "top-left" | "top-right" | "bottom-right" | "bottom-left";
+type QuotePosition = {
+  edge: "left" | "right";
+  x: string;
+  y: string;
+  height: number;
+  tail: string;
+  origin: string;
+};
 
-// Percent positions are relative to the About hero; adjust them here to tune each spot.
-const SPOT_POSITIONS: Record<AboutQuoteSpot, { top: string; left: string; tail: string; origin: string }> = {
-  "top-left": { top: "0%", left: "0%", tail: "tail-right", origin: "right bottom" },
-  "top-right": { top: "0%", left: "75%", tail: "tail-left", origin: "left bottom" },
-  "right-low": { top: "86%", left: "75%", tail: "tail-top-left", origin: "left top" },
-  "left-low": { top: "86%", left: "0%", tail: "tail-top-right", origin: "right top" },
+const SPOT_SEQUENCE: QuoteSpot[] = ["top-left", "top-right", "bottom-right", "bottom-left"];
+
+// Positions are percentages of the photo box; adjust these anchors to move each bubble.
+const SPOT_POSITIONS: Record<QuoteSpot, QuotePosition> = {
+  "top-left": { edge: "right", x: "18%", y: "18%", height: 70, tail: "tail-right", origin: "right bottom" },
+  "top-right": { edge: "left", x: "70%", y: "12%", height: 70, tail: "tail-left", origin: "left bottom" },
+  "bottom-right": { edge: "left", x: "78%", y: "140.8%", height: 70, tail: "tail-top-left", origin: "left top" },
+  "bottom-left": { edge: "right", x: "24%", y: "131%", height: 104, tail: "tail-top-right", origin: "right top" },
 };
 
 export default function QuoteBubbles({ quotes }: QuoteBubblesProps) {
@@ -102,7 +112,13 @@ export default function QuoteBubbles({ quotes }: QuoteBubblesProps) {
     <div className="about-quote-layer">
       <div
         className={`about-quote-bubble ${spot.tail}`}
-        style={{ top: spot.top, left: spot.left, transformOrigin: spot.origin }}
+        style={{
+          ...(spot.edge === "right" ? { right: `calc(100% - ${spot.x})` } : { left: spot.x }),
+          top: `calc(var(--quote-y, ${spot.y}) - ${spot.height / 2}px)`,
+          height: spot.height,
+          transformOrigin: spot.origin,
+        } as CSSProperties}
+        data-spot={spotName}
         data-phase={phase}
         tabIndex={0}
         aria-live="off"

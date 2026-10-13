@@ -2,15 +2,13 @@ import type { CSSProperties } from "react";
 import Image from "next/image";
 import Card from "@/components/ui/Card";
 import SocialLinks from "@/components/ui/SocialLinks";
-import Header from "@/components/layout/Header";
 import Container from "@/components/layout/Container";
 import { home } from "@/content/home";
 import { site } from "@/content/site";
 
 export default function Hero() {
   return (
-    <section className="relative mx-2 my-2 flex min-h-[calc(100svh-1rem)] flex-1 flex-col overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#f8faff] to-[#eef3fa] shadow-[0_32px_96px_rgba(30,64,175,0.18),0_10px_28px_rgba(15,23,42,0.08)] md:mx-8 md:my-8 md:min-h-auto lg:min-h-[calc(100vh-4rem)]">
-      <Header />
+    <div className="home-fullframe-content relative flex h-full w-full flex-col">
       <div className="pointer-events-none absolute inset-0 z-10 mx-auto hidden w-full max-w-[1000rem] grid-cols-[1fr_1.55fr_0.75fr] grid-rows-1 gap-8 px-[clamp(24px,4vw,64px)] lg:grid">
         <div />
         <div className="relative">
@@ -35,9 +33,9 @@ export default function Hero() {
             <div className="flex flex-1 items-start py-5 md:items-center md:py-12 lg:py-0">
               <div className="grid w-full grid-cols-1 items-center gap-8 lg:grid-cols-[1fr_1.55fr_0.75fr]">
                 <div className="relative z-20 flex min-w-0 flex-col justify-center">
-                  <p className="lg:text-2xl font-bold text-gray-600">{home.intro}</p>
-                  <h1 className="mb-4 font-display text-[clamp(1.8rem,8vw,3.25rem)] tracking-[0.02em] md:mb-6 md:text-[clamp(2rem,5vw,3.75rem)] md:tracking-[0.04em] lg:text-[clamp(2.4rem,3.4vw,2.85rem)] font-bold lg:tracking-[0.02em]">{site.name}</h1>
-                  <p className="text-balance text-lg text-gray-600">{home.bio}</p>
+                  <p className="home-intro">{home.intro}</p>
+                  <h1 className="home-headline">{site.name}</h1>
+                  <p className="home-bio">{home.bio}</p>
                 </div>
 
                 <div className="hidden min-w-0 lg:block" aria-hidden="true" />
@@ -94,6 +92,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
