@@ -13,7 +13,7 @@ export default function PageFrame({ children, aboutScrollSnap = false }: PageFra
       <Header />
       <main className="flex w-full flex-1">
         <Container>
-          <div className="mx-auto w-full max-w-7xl">{children}</div>
+          <div className="mx-auto w-full max-w-[90rem]">{children}</div>
         </Container>
       </main>
     </section>

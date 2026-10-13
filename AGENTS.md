@@ -18,7 +18,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 - `src/components/sections/projects/CardGrid.tsx`: responsive grid for project and category cards.
 - `src/components/layout/PageFrame.tsx`: shared rounded page frame.
 - `src/components/layout/NavDropdown.tsx`: project navigation dropdown.
-- `src/components/sections/about/`: AboutHero, Journey, Drives, Skills and ClosingBand sections.
+- `src/components/sections/about/`: AboutHero, Journey and Skills sections.
 - `src/types/about.ts`: strict type for the About page content shape.
 - `src/components/ui/MediaCard.tsx`: shared base card markup.
 - `src/components/ui/CategoryCard.tsx`: category card wrapper.
@@ -35,7 +35,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Components
 
 - Client components only for interactive or browser-dependent behavior; keep the rest as Server Components.
-- Allowed small client components include `src/components/layout/NavDropdown.tsx` for the desktop Projects menu.
+- Allowed small client components include `src/components/layout/NavDropdown.tsx` for the desktop Projects menu and `src/components/sections/about/QuoteBubbles.tsx` for About quote bubbles.
 - Allowed UI packages include `simple-icons` for rendering individual imported brand icons as inline SVGs.
 - Skills list stays at 12 tools or fewer. Only tools I can discuss in an interview.
 - About page is one screen on desktop. Skills list stays at 6 tools.

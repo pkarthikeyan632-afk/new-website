@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import PageFrame from "@/components/layout/PageFrame";
 import AboutHero from "@/components/sections/about/AboutHero";
-import ClosingBand from "@/components/sections/about/ClosingBand";
-import Drives from "@/components/sections/about/Drives";
 import Journey from "@/components/sections/about/Journey";
 import Skills from "@/components/sections/about/Skills";
 import { about } from "@/content/about";
@@ -21,11 +19,7 @@ export default function AboutPage() {
       <div className="about-one-screen">
         <AboutHero />
         <Journey />
-        <div className="about-bottom-grid">
-          <Drives />
-          <Skills />
-        </div>
-        <ClosingBand />
+        <Skills />
       </div>
     </PageFrame>
   );

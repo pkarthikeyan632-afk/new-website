@@ -1,18 +1,27 @@
+export type AboutQuoteSpot = "top-left" | "top-right" | "left-low" | "right-low";
+export type AboutQuote = { text: string; spot: AboutQuoteSpot };
+
 export const about = {
   eyebrow: "About me",
   headline: "Turning ideas into working systems.",
   highlight: "working systems.",
   intro:
-    "I'm Karthikeyan, a software developer at TekWissen. I joined as a Generative AI R&D intern and was converted to a full-time role. I enjoy building practical solutions with AI, automation and engineering.",
+    "I'm a software developer at TekWissen, working at the intersection of software engineering, AI, and automation. I build practical solutions that connect applications, APIs, and intelligent systems to solve real-world problems.",
   resumeHref: "/resume.pdf", // leave "" to hide the button until the file exists
-  photo: "/images/about-portrait.webp", // if the file is missing, an empty photo space shows
-  chip: "Currently exploring AI, automation and embedded systems",
+  photo: "/images/about-portrait-suit.webp", // if the file is missing, an empty photo space shows
+
+  quotes: [
+    { text: "Ideas matter when you build them.", spot: "top-left" },
+    { text: "Understand the problem. Build the solution.", spot: "top-right" },
+    { text: "Good engineering connects the pieces.", spot: "left-low" },
+    { text: "Learn by building. Improve by iterating.", spot: "right-low" },
+  ] satisfies AboutQuote[],
 
   info: [
-    { icon: "education", label: "Education", title: "B.E. ECE (2026)", detail: "S.A Engineering College" },
-    { icon: "role", label: "Current role", title: "Software Developer", detail: "TekWissen, full time" },
+    { icon: "education", label: "Education", title: "B.E. Electronics & Communication Engineering ", detail: "S.A Engineering College. 2026" },
+    { icon: "role", label: "Current role", title: "Jr. Software Engineer", detail: "TekWissen, full time" },
     { icon: "location", label: "Location", title: "Bengaluru, India", detail: "" },
-    { icon: "focus", label: "Focus", title: "AI, Automation, Embedded", detail: "" },
+    { icon: "focus", label: "Focus", title: "Software · AI & Automation · Embedded Systems", detail: "Building practical, connected systems" },
   ],
 
   journey: {
@@ -23,16 +32,6 @@ export const about = {
       { year: "2025", title: "Automation Trainee", text: "PLC and SCADA at Syscom Automation." },
       { year: "2025", title: "AI R&D Intern", text: "APIs and workflow automation at TekWissen." },
       { year: "2026", title: "Software Developer", text: "Converted to full time at TekWissen." },
-    ],
-  },
-
-  drives: {
-    eyebrow: "What drives me",
-    title: "Problems, not just theory.",
-    items: [
-      { icon: "bulb", text: "Build real solutions" },
-      { icon: "chart", text: "Learn by doing" },
-      { icon: "team", text: "Work with a team" },
     ],
   },
 
@@ -49,7 +48,4 @@ export const about = {
     ],
   },
 
-  closing: {
-    text: "Always happy to talk about useful products and hard problems.",
-  },
 };

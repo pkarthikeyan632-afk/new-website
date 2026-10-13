@@ -8,7 +8,7 @@ const cardPositions: Record<CategorySlug, { key: string; top: string; left: stri
 
 export const home = {
   intro: "Hello, I'm",
-  bio: "I build software systems that combine AI, automation, and engineering to solve real‑world problems.",
+  bio: "Software Developer building practical applications with AI, software engineering, and automation.",
   cards: categories.map((category) => ({
     ...category,
     href: `/projects/${category.slug}`,

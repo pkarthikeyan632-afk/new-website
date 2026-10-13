@@ -3,12 +3,13 @@ import { join } from "node:path";
 import Image from "next/image";
 import Link from "next/link";
 import AboutIcon from "@/components/sections/about/AboutIcon";
+import QuoteBubbles from "@/components/sections/about/QuoteBubbles";
 import { about } from "@/content/about";
 import { site } from "@/content/site";
 import type { AboutContent } from "@/types/about";
 
 const content: AboutContent = about;
-const photoPath = "/images/Media (1).jpg";
+const photoPath = content.photo;
 const hasPhoto = existsSync(join(process.cwd(), "public", photoPath.replace(/^\//, "")));
 
 function ArrowIcon() {
@@ -54,33 +55,37 @@ export default function AboutHero() {
         </div>
       </div>
 
-      <div className="about-photo-space">
-        <div aria-hidden="true" className="about-photo-orb" />
-        {hasPhoto && (
-          <Image
-            src={photoPath}
-            alt={site.name}
-            fill
-            priority
-            sizes="(min-width: 1280px) 24vw, 90vw"
-            className="z-10 object-cover object-[center_42%]"
-          />
-        )}
-        <div className="about-chip"><span aria-hidden="true" />{content.chip}</div>
+      <div className="about-photo-wrap">
+        <div className="about-photo-space">
+          <div aria-hidden="true" className="about-photo-orb" />
+          {hasPhoto && (
+            <Image
+              src={photoPath}
+              alt={site.name}
+              fill
+              priority
+              sizes="(min-width: 1280px) 33vw, 100vw"
+              className="about-portrait-image z-10 object-cover object-top"
+            />
+          )}
+        </div>
       </div>
 
-      <div className="about-info-panel">
-        {content.info.map((item, index) => (
-          <article key={item.label} className={`about-info-row${index === content.info.length - 1 ? " last" : ""}`}>
-            <span className="about-info-icon"><AboutIcon name={item.icon} /></span>
-            <div className="min-w-0">
-              <p className="about-info-label">{item.label}</p>
-              <h2 className="about-info-title">{item.title}</h2>
-              {item.detail !== "" && <p className="about-info-detail">{item.detail}</p>}
-            </div>
-          </article>
-        ))}
+      <div className="about-info-wrap">
+        <div className="about-info-panel">
+          {content.info.map((item, index) => (
+            <article key={item.label} className={`about-info-row${index === content.info.length - 1 ? " last" : ""}`}>
+              <span className="about-info-icon"><AboutIcon name={item.icon} /></span>
+              <div className="min-w-0">
+                <p className="about-info-label">{item.label}</p>
+                <h2 className="about-info-title">{item.title}</h2>
+                {item.detail !== "" && <p className="about-info-detail">{item.detail}</p>}
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
+      <QuoteBubbles quotes={content.quotes} />
     </section>
   );
 }
