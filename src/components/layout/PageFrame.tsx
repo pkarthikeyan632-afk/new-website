@@ -11,11 +11,7 @@ export default function PageFrame({ children }: PageFrameProps) {
     <section className="site-frame relative mx-2 my-2 flex flex-1 flex-col bg-gradient-to-br from-[#f8faff] to-[#eef3fa] md:mx-8 md:my-8">
       <Header />
       <main className="site-main flex w-full flex-1">
-        <Container>
-          <div className="mx-auto w-full max-w-[var(--container-max)]">
-            {children}
-          </div>
-        </Container>
+        <Container>{children}</Container>
       </main>
     </section>
   );

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
-import MainNavigation from "@/components/layout/MainNavigation";
+import DesktopNav from "@/components/layout/DesktopNav";
 import MobileMenu from "@/components/layout/MobileMenu";
 import { site } from "@/content/site";
 
@@ -17,7 +17,7 @@ export default function Header() {
             {site.logo}<span className="text-blue-600">.</span>
           </Link>
 
-          <MainNavigation navigation={site.navigation} />
+          <DesktopNav navigation={site.navigation} />
 
           <Link
             href={site.callToAction.href}
@@ -31,3 +31,4 @@ export default function Header() {
     </header>
   );
 }
+

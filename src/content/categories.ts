@@ -6,6 +6,8 @@ export type Category = {
   summary: string;
   lottie: string;
   scale: number;
+  floatDuration: string;
+  floatDelay: string;
   image?: string;
   imageAlt?: string;
 };
@@ -21,6 +23,8 @@ export const categories: Category[] = [
     summary: "An overview of AI and automation.",
     lottie: "/animations/ai-automation.lottie",
     scale: 1.5,
+    floatDuration: "4.8s",
+    floatDelay: "0s",
   },
   {
     slug: "embedded-iot",
@@ -28,6 +32,8 @@ export const categories: Category[] = [
     summary: "An overview of embedded systems and IoT.",
     lottie: "/animations/embedded-iot.lottie",
     scale: 1.5,
+    floatDuration: "5.6s",
+    floatDelay: "-1.4s",
   },
   {
     slug: "software-engineering",
@@ -35,5 +41,7 @@ export const categories: Category[] = [
     summary: "An overview of software engineering.",
     lottie: "/animations/software-engineering.lottie",
     scale: 1,
+    floatDuration: "4.3s",
+    floatDelay: "-2.1s",
   },
 ];

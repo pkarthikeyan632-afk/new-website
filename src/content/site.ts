@@ -1,8 +1,11 @@
+const email = "p.karthikeyan632@gmail.com";
+
 export const site = {
   name: "Karthikeyan",
   role: "Software Engineer",
   logo: "KP",
-  email: "p.karthikeyan632@gmail.com",
+  email,
+  contactHref: `mailto:${email}`,
   socialLinks: [
     {
       label: "LinkedIn",
@@ -23,6 +26,6 @@ export const site = {
   ],
   callToAction: {
     label: "LET'S TALK",
-    href: "mailto:p.karthikeyan632@gmail.com",
+    href: `mailto:${email}`,
   },
 };

@@ -10,21 +10,17 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 ## Folder plan
 
+- `src/app/`: route files, root layout and template only.
+- `src/components/layout/`: Container, PageFrame, Header, DesktopNav, ProjectsDropdown and MobileMenu.
+- `src/components/home/`: Hero and FloatingCard.
+- `src/components/about/`: ProfileCard, AboutIntro, FocusAreas and about.css.
+- `src/components/projects/`: ProjectCards, CardGrid, PageHeading, BackLink and ProjectDetails.
+- `src/components/shared/`: Icons, SocialLinks and LottiePlayer.
+- `src/content/`: site, home, about, experience, category and project data and types.
+- `src/lib/navigation.ts`: shared active-path helper.
+- `src/lib/projects.ts`: category and project lookup helpers.
+- `src/styles/globals.css`: design tokens and shared, header, home and projects styles.
 - `public/animations/`: Lottie animation assets.
-- `src/app/projects/page.tsx`: projects index route.
-- `src/app/projects/[category]/page.tsx`: project category route.
-- `src/app/projects/[category]/[slug]/page.tsx`: project detail route.
-- `src/components/sections/projects/`: project route presentation components.
-- `src/components/sections/projects/CardGrid.tsx`: responsive grid for project and category cards.
-- `src/components/layout/PageFrame.tsx`: shared rounded page frame.
-- `src/components/layout/NavDropdown.tsx`: project navigation dropdown.
-- `src/components/sections/about/`: AboutHero, Journey and Skills sections.
-- `src/types/about.ts`: strict type for the About page content shape.
-- `src/components/ui/MediaCard.tsx`: shared base card markup.
-- `src/components/ui/CategoryCard.tsx`: category card wrapper.
-- `src/components/ui/ProjectCard.tsx`: linked project card.
-- `src/content/categories.ts`: project category data.
-- `src/content/projects.ts`: project data and lookup helpers.
 - Cards have an empty image area until a real image path is added in categories.ts or projects.ts.
 - All cards use MediaCard. Never copy card markup.
 
@@ -35,10 +31,10 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 ## Components
 
 - Client components only for interactive or browser-dependent behavior; keep the rest as Server Components.
-- Allowed small client components include `src/components/layout/NavDropdown.tsx` for the desktop Projects menu and `src/components/sections/about/QuoteBubbles.tsx` for About quote bubbles.
+- Allowed small client components include `src/components/layout/ProjectsDropdown.tsx` for the desktop Projects menu.
 - Allowed UI packages include `simple-icons` for rendering individual imported brand icons as inline SVGs.
-- Skills list stays at 12 tools or fewer. Only tools I can discuss in an interview.
-- About page is one screen on desktop. Skills list stays at 6 tools.
+- About page is one screen on desktop.
+- About page tools live in about.focusAreas; 12 tools max, only tools I can discuss in an interview.
 
 ## Design
 

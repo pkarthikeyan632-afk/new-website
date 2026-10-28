@@ -16,6 +16,59 @@ export type Project = {
   links: { label: string; href: string }[];
   image?: string;
   imageAlt?: string;
+  context?: string;
+  overview?: string;
+  objectives?: string[];
+  status?: string;
+  architecture?: ArchitectureLayer[];
+  workflow?: WorkflowStep[];
+  sequence?: ProjectSequence;
+  gallery?: ProjectImage[];
+  challenges?: string[];
+  statusItems?: ProjectStatusItem[];
+  limitations?: string[];
+  nextSteps?: string[];
+  tools?: (string | ProjectTool)[];
+  dataModel?: DataModelTable[];
+  code?: CodeSample[];
+  dataTrace?: string[];
+  documentation?: ProjectLink[];
+};
+
+export type ArchitectureLayer = {
+  id?: string;
+  layer: string;
+  text: string;
+  tech?: string[];
+  status?: "built" | "planned";
+  planned?: boolean;
+  input?: string;
+  output?: string;
+  details?: string[];
+  kind?: "source" | "backend" | "ai" | "data" | "frontend" | "hardware" | "other";
+};
+
+export type WorkflowStep = { title: string; text: string; planned?: boolean };
+export type ProjectSequence = {
+  actors: string[];
+  messages: { from: string; to: string; text: string; planned?: boolean }[];
+};
+export type ProjectImage = {
+  src: string;
+  alt: string;
+  caption: string;
+  concept?: boolean;
+  fit?: "cover" | "contain";
+};
+export type ProjectStatusItem = { label: string; status: "done" | "in-progress" };
+export type ProjectTool = { name: string; group?: string };
+export type DataModelTable = { name: string; fields: { name: string; type: string; description?: string }[] };
+export type CodeSample = { path: string; code: string };
+export type ProjectLink = { label: string; href: string };
+
+export const projectsPageCopy = {
+  title: "Projects",
+  intro: "Browse work by category.",
 };
 
 export const projectCardCopy = {
@@ -24,11 +77,6 @@ export const projectCardCopy = {
   categoryAction: "VIEW PROJECTS",
   projectsComingSoon: "Projects coming soon",
   allProjects: "All projects",
-};
-
-export const projectsPageCopy = {
-  title: "Projects",
-  intro: "Browse work by category.",
 };
 
 export const projects: Project[] = [
@@ -93,11 +141,3 @@ export const projects: Project[] = [
     links: [],
   },
 ];
-
-export function getProjectsByCategory(category: Project["category"]): Project[] {
-  return projects.filter((project) => project.category === category);
-}
-
-export function getProject(category: Project["category"], slug: string): Project | undefined {
-  return projects.find((project) => project.category === category && project.slug === slug);
-}

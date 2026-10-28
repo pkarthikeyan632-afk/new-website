@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { isActivePath } from "@/lib/navigation";
 
 type MobileMenuProps = {
   navigation: { label: string; href: string }[];
@@ -35,9 +36,7 @@ export default function MobileMenu({ navigation, callToAction }: MobileMenuProps
           className="absolute right-0 top-full z-50 mt-2 flex w-64 max-w-[calc(100vw-2rem)] flex-col gap-1 rounded-2xl border border-slate-100 bg-white p-3 shadow-xl"
         >
           {navigation.map((item) => {
-            const isActive = item.href === "/projects"
-              ? pathname === item.href || pathname.startsWith(`${item.href}/`)
-              : pathname === item.href;
+            const isActive = isActivePath(pathname, item.href);
 
             return (
               <Link
